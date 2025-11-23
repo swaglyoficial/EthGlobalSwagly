@@ -1,0 +1,86 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  /* Marca consistente en claro y oscuro */
+  --ifm-color-primary: #5061ec;
+  --ifm-color-primary-dark: #4353d3;
+  --ifm-color-primary-darker: #3c4cbe;
+  --ifm-color-primary-darkest: #2e3a93;
+  --ifm-color-primary-light: #6575f0;
+  --ifm-color-primary-lighter: #7a89f4;
+  --ifm-color-primary-lightest: #9aa6fb;
+  --ifm-link-color: #5061ec;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(80, 97, 236, 0.08);
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.86);
+  --ifm-footer-background-color: #f3f4f6;
+  --ifm-background-color: #f8fafc;
+  --ifm-color-content: #0b1021;
+
+  /* Tokens Swagly para usar en módulos y evitar pisadas */
+  --sw-bg: #f8fafc;
+  --sw-card: #ffffff;
+  --sw-text: #0b1021;
+  --sw-muted: #374151;
+  --sw-border: rgba(0, 0, 0, 0.06);
+  --sw-cta-primary: #5061ec;
+  --sw-cta-accent: #b5e86d;
+  --sw-highlight: #fee887;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #b5e86d; /* CTA principal verde en oscuro */
+  --ifm-color-primary-dark: #9acd5b;
+  --ifm-color-primary-darker: #7dad47;
+  --ifm-color-primary-darkest: #5c7f34;
+  --ifm-color-primary-light: #c7f28c;
+  --ifm-color-primary-lighter: #d8f7aa;
+  --ifm-color-primary-lightest: #e9fbca;
+  --ifm-link-color: #fee887;
+  --docusaurus-highlighted-code-line-bg: rgba(181, 232, 109, 0.08);
+  --ifm-background-color: #060608;
+  --ifm-navbar-background-color: rgba(0, 0, 0, 0.75);
+  --ifm-footer-background-color: #0b0b0f;
+  --ifm-color-content: #f6f7fb;
+
+  --sw-bg: #060608;
+  --sw-card: #0b0b0f;
+  --sw-text: #f6f7fb;
+  --sw-muted: #c5c9e5;
+  --sw-border: rgba(255, 255, 255, 0.08);
+  --sw-cta-primary: #b5e86d;
+  --sw-cta-accent: #fee887;
+  --sw-highlight: #fee887;
+}
+
+.navbar {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero--primary {
+  background: radial-gradient(circle at 20% 20%, rgba(80, 97, 236, 0.35), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(254, 232, 135, 0.25), transparent 20%),
+    #0b0b0f;
+  color: #fff;
+}
+
+.footer--dark {
+  background: #0b0b0f;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='light'] .navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .footer {
+  background: #f3f4f6;
+  color: #0b1021;
+}
