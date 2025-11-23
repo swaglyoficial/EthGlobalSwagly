@@ -3,7 +3,7 @@
  * API: Obtener datos del usuario
  * ============================================
  *
- * Obtiene la información del usuario incluyendo su nombre ENS
+ * Obtiene la información del usuario
  */
 
 import { NextRequest, NextResponse } from 'next/server'
@@ -27,10 +27,6 @@ export async function GET(request: NextRequest) {
         id: true,
         walletAddress: true,
         nickname: true,
-        ensName: true,
-        ensFullName: true,
-        ensRegistered: true,
-        ensTxHash: true,
         createdAt: true,
       },
     })

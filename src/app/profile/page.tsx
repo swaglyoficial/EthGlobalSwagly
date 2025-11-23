@@ -9,7 +9,6 @@ import { ConnectButton } from '@/components/connect-button'
 import { TokenBalance } from '@/components/token-balance'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { EnsDisplay } from '@/components/ens-display'
 
 interface UserProfile {
   id: string
@@ -478,11 +477,6 @@ export default function ProfilePage() {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* ENS Name Section */}
-          <div className="mb-8">
-            <EnsDisplay />
           </div>
 
           {/* Wallet Connection Card */}

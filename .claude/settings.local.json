@@ -42,7 +42,8 @@
       "Bash(if not exist \"src\\app\\api\\analytics\\route.ts\" echo.)",
       "Bash(\"src\\app\\api\\analytics\\route.ts\")",
       "WebSearch",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git remote add:*)"
     ],
     "deny": [],
     "ask": []

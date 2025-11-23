@@ -19,11 +19,6 @@ model User {
   role          UserRole        @default(user) @map("role")
   createdAt     DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
   nickname      String?
-  // ENS fields
-  ensName       String?         @unique @map("ens_name")
-  ensFullName   String?         @map("ens_full_name")
-  ensRegistered Boolean         @default(false) @map("ens_registered")
-  ensTxHash     String?         @map("ens_tx_hash")
   passports     Passport[]
   scans         Scan[]
   proofs        ActivityProof[]
