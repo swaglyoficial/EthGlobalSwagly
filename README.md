@@ -1,4 +1,4 @@
-# 🎨 Swagly - Web3 Digital Marketplace with ENS Integration
+# 🎨 Swagly
 
 > A decentralized marketplace for digital creators powered by blockchain technology, gasless transactions, and ENS identity management.
 
