@@ -16,8 +16,7 @@ Swagly is a next-generation Web3 marketplace that enables digital creators to mo
 - **🎨 Digital Asset Marketplace**: Buy and sell digital products (images, designs, templates) as NFTs
 - **⛽ Gasless Transactions**: Users never pay gas fees thanks to Biconomy Paymaster integration
 - **🔐 Smart Wallet Integration**: ERC-4337 account abstraction with Nexus smart wallets
-- **🌐 ENS Subdomain System**: Free `username.swagly.eth` subdomains for every user
-- **💳 Multi-Payment Support**: Pay with ETH or stablecoins (USDC, USDT)
+- **💳 Multi-Payment Support**: Pay with ETH and other Tokens
 - **🎁 Creator Rewards**: Direct creator support through transparent blockchain payments
 - **📱 Social Login**: Connect via email, Google, Discord, or traditional Web3 wallets
 - **🖼️ IPFS Storage**: Decentralized storage for digital assets via Vercel Blob
@@ -26,11 +25,10 @@ Swagly is a next-generation Web3 marketplace that enables digital creators to mo
 
 ### Blockchain Stack
 
-- **Chain**: Scroll (Ethereum L2) - ChainID: 534352
+- **Chain**: You can choose your own chain
 - **Smart Wallets**: Nexus (ERC-4337) via Thirdweb
 - **Gas Sponsorship**: Transferme and permit (Thirdweb)
-- **Identity**: ENS subdomains on Ethereum Mainnet
-- **Storage**: IPFS/Vercel Blob for digital assets
+- **Storage**: IPFS/Storacha Filecoin
 
 ### Frontend Stack
 
@@ -42,22 +40,21 @@ Swagly is a next-generation Web3 marketplace that enables digital creators to mo
 
 ### Backend Stack
 
-- **Database**: PostgreSQL (Supabase)
+- **Database**: Storacha Filecoin
 - **ORM**: Prisma
 - **Authentication**: Thirdweb Connect
 - **API**: Next.js API Routes
-- **File Upload**: Vercel Blob Storage
+- **File Upload**: Storacha Filecoin
 
 ## 💡 How It Works
 
 ### For Buyers
 
 1. **Connect Wallet**: Use email, social login, or Web3 wallet
-2. **Get ENS Name**: Automatically claim your free `username.swagly.eth` subdomain
 3. **Browse Marketplace**: Explore digital products from creators
 4. **Purchase Without Gas**: Buy products with zero transaction fees (sponsored by Swagly)
 5. **Instant Download**: Access your purchased digital assets immediately
-6. **Claim token SWAG**: Do activities and win tokens for SWAG.
+6. **Claim token**: Do activities and win tokens.
 
 ### For Creators
 
@@ -65,43 +62,22 @@ Swagly is a next-generation Web3 marketplace that enables digital creators to mo
 2. **Set Pricing**: Price in ETH or stablecoins
 3. **Get Paid Instantly**: Receive payments directly to your wallet
 4. **Track Sales**: Monitor your product performance
-5. **Build Reputation**: Your ENS name becomes your creator identity
-
-### ENS Integration Deep Dive
-
-Swagly implements a sophisticated ENS subdomain management system:
-
-```typescript
-// Subdomain Registration Flow
-1. User connects wallet → receives Nexus smart wallet
-2. Backend validates availability of username.swagly.eth
-3. Owner wallet calls ENS Name Wrapper contract
-4. Subdomain created with setSubnodeRecord()
-5. Public Resolver updated with user's address
-6. User can now be identified as username.swagly.eth
-```
-
-**Smart Contract Integration**:
-- **Name Wrapper**: `0xD4416b13d2b3a9aBae7AcD5D6C2BbDBE25686401`
-- **Public Resolver**: `0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63`
-- **Parent Domain**: `swagly.eth` (owned by platform)
 
 ## 🛠️ Getting Started
 
 ### Prerequisites
 
 - Node.js 18+ and npm
-- PostgreSQL database (or Supabase account)
+- Storacha Filecoin
 - Thirdweb API keys
-- Biconomy Paymaster account
-- ENS domain ownership (for production)
+- Smart contract functionalities in Thirdweb
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/swaglyoficial/SwaglyENS.git
-cd SwaglyENS
+git clone https://github.com/swaglyoficial/EthGlobalSwagly
+cd EthGlobalSwagly
 
 # Install dependencies
 npm install
@@ -123,28 +99,36 @@ Visit `http://localhost:3000` to see the app.
 ### Environment Variables
 
 ```env
+# Connect to Supabase via connection pooling
+DATABASE_URL="postgresql://postgres.xwwpcdmeknaffijnsktc:daniellagart426@aws-1-us-east-2.pooler.supabase.com:6543/postgres?pgbouncer=true"
+# Direct connection to the database. Used for migrations
+DIRECT_URL="postgresql://postgres.xwwpcdmeknaffijnsktc:daniellagart426@aws-1-us-east-2.pooler.supabase.com:5432/postgres"
 # Thirdweb Configuration
-NEXT_PUBLIC_THIRDWEB_CLIENT_ID=your_client_id
-THIRDWEB_SECRET_KEY=your_secret_key
+NEXT_PUBLIC_THIRDWEB_CLIENT_ID=ba7a96650ddbf17991e91a37adc04faf
+THIRDWEB_SECRET_KEY=w2eFsou5nA2a0Bnkce1p-vf2lyr_iDXtKUUvdMUNp6KdRR8452ipc29Bs3CtWESrdlTyQVrrTmpdjQrbOK-80A
+# Creator Wallet (for receiving tokens from purchases)
+CREATOR_WALLET_ADDRESS=0x645AC03F1db27080A11d3f3a01030c455c7021bD
+NEXT_PUBLIC_CREATOR_WALLET_ADDRESS=0x645AC03F1db27080A11d3f3a01030c455c7021bD
+CREATOR_WALLET_PRIVATE_KEY=8382d8938c0c3559781b57804c9c67343b6e0e5b483e5fc8478d36fdf8e7f767
+# App URL
+# Desarrollo: http://localhost:3000
+# Producción: https://swaglyoficial-production.up.railway.app/
+NEXT_PUBLIC_APP_URL=https://swaglyoficial-production.up.railway.app/
 
-# Database (Supabase/PostgreSQL)
-DATABASE_URL=your_database_url
-DIRECT_URL=your_direct_database_url
+#EtherscanApi
+ETHERSCAN_API="https://api.etherscan.io/v2/api?chainid=534352&action=balance&apikey=K4D78JQRMVXRBIJEICIT9SY12IXD1QJ8Q6"
 
-# Biconomy (Gas Sponsorship)
-NEXT_PUBLIC_BICONOMY_PAYMASTER_API_KEY=your_api_key
-NEXT_PUBLIC_BICONOMY_PAYMASTER_URL=your_paymaster_url
-NEXT_PUBLIC_BICONOMY_BUNDLER_URL=your_bundler_url
+NEXT_PUBLIC_ATTESTATIONS_CONTRACT_ADDRESS=0xA9fdE7d55Fbc7fD94e361A63860E650521000595
+NEXT_PUBLIC_ATTESTATIONS_CHAIN_ID=534351
+ATTESTOR_WALLET_PRIVATE_KEY=8382d8938c0c3559781b57804c9c67343b6e0e5b483e5fc8478d36fdf8e7f767
+ATTESTOR_WALLET_ADDRESS=0x645ac03f1db27080a11d3f3a01030c455c7021bd
 
-# ENS Owner Wallet (for subdomain registration)
-ENS_OWNER_PRIVATE_KEY=your_private_key
-
-# Creator Wallet (receives platform fees)
-CREATOR_WALLET_ADDRESS=your_wallet_address
-
-# Storage
-BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
-```
+# Storacha (IPFS Backup) Configuration
+STORACHA_DID=did:key:z6MkjAc9WFcFtj15dRgxELRnFbWF8sfJyuZ1Awd5tVtzQ48h
+STORACHA_PRIVATE_KEY=MgCbW[DZoPnzcZOpGgSX0X35BRweXrymugzjtRTnTJ3xuqTyO0BRgZKTTH6sW/cyhTdHIBd6RuC9MU+ubUwLByHyrEPrLI=
+# STORACHA_PROOF= (Opcional - se genera después de crear un espacio en Storacha)
+NEXT_PUBLIC_APP_ID='app_c82bd1c6a23664f9b82d94745ad15077' # APP ID from the developer portal
+SECRET_KEY='api_a2V5Xzg2ZmQwODNlOGZjYjJhNzdjNWRmZWE3ZjNjOTk0N2NjOnNrX2VkMzhjZDU5YTZmYjI1MjQyMTEzOWU0MmE3OGI5ZTM5NjBmYTNiNjhmOWRhNGUwZ'
 
 ## 📁 Project Structure
 
@@ -161,12 +145,9 @@ swagly/
 │   │   ├── ens-*.tsx         # ENS-related components
 │   │   └── ui/               # shadcn/ui components
 │   ├── hooks/                 # Custom React hooks
-│   │   ├── useEnsName.ts     # ENS name resolution
-│   │   └── useUserEnsName.ts # User ENS management
 │   ├── lib/                   # Utility libraries
-│   │   └── ens-manager.ts    # ENS contract interactions
 │   └── config/               # Configuration files
-├── prisma/                    # Database schema
+├── Storacha/                    # Database schema
 ├── docs/                      # Documentation
 └── public/                    # Static assets
 ```
@@ -174,24 +155,10 @@ swagly/
 ## 🔐 Security Features
 
 - **Non-custodial**: Users maintain full control of their assets
-- **Smart Contract Audited**: Uses battle-tested ENS and ERC-4337 contracts
 - **Encrypted Storage**: Sensitive data encrypted at rest
 - **Rate Limiting**: API endpoints protected against abuse
 - **Input Validation**: All user inputs sanitized and validated
 - **HTTPS Only**: All communications encrypted in transit
-
-## 🎨 Smart Contract Interactions
-
-### ENS Subdomain Registration
-
-```typescript
-// Register a subdomain under swagly.eth
-const result = await registerSubdomain(
-  "alice",                    // Subdomain label
-  "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb" // Owner address
-);
-// Creates: alice.swagly.eth → 0x742d35...
-```
 
 ### Gasless Product Purchase
 
@@ -205,11 +172,10 @@ const tx = await purchaseProduct(productId, {
 
 ## 📊 Database Schema
 
-```prisma
+```prisma && json structure for Storacha
 model User {
   id            String    @id @default(cuid())
   walletAddress String    @unique
-  ensName       String?   @unique  // username.swagly.eth
   email         String?
   products      Product[]
   purchases     Purchase[]
@@ -260,8 +226,6 @@ npm run test:e2e
 
 ## 📈 Roadmap
 
-- [ ] Scroll support
-- [ ] Advanced ENS features (avatars, text records)
 - [ ] Progresive Web App
 
 ## 📞 Contact & Links
@@ -271,12 +235,11 @@ npm run test:e2e
 
 ## 🙏 Acknowledgments
 
-- **Scroll** - L2 infrastructure
+- **Chain** - L2 infrastructure
 - **Thirdweb** - Smart wallet SDK
 - **Thirdweb** - Gas sponsorship
-- **ENS** - Decentralized naming
 - **Vercel** - Deployment platform
-- **Supabase** - Database infrastructure
+- **Storacha Filecoin** - Database infrastructure
 
 Example transactions
 
